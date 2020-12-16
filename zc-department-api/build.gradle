@@ -1,0 +1,10 @@
+dependencies {
+    compile project(':zc-employee-api')
+    compile 'org.springframework.cloud:spring-cloud-starter-openfeign:' + springcloudVersion
+    compile 'org.projectlombok:lombok:1.18.12'
+
+    compile 'io.swagger:swagger-annotations:1.5.22'
+
+}
+
+

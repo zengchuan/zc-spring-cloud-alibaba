@@ -1,0 +1,69 @@
+server:
+  port: 10000
+spring:
+  profiles:
+    active: ${spring.profile:dev}
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: zc-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: ${nacos.server:localhost}:${nacos.port:8848}
+        file-extension: yaml
+      discovery:
+        server-addr: ${nacos.server:localhost}:${nacos.port:8848}
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: false
+      routes:
+        - id: zc-employee-service
+          uri: lb://zc-employee-service
+          predicates:
+            - Path=/zc-employee-service/**
+        - id: zc-department-service
+          uri: lb://zc-department-service
+          predicates:
+            - Path=/zc-department-service/**
+        - id: zc-organization-service
+          uri: lb://zc-organization-service
+          predicates:
+            - Path=/zc-organization-service/**
+        - id: zc-user-service
+          uri: lb://zc-user-service
+          predicates:
+            - Path=/zc-user-service/**
+#        - id: zc-auth-service
+#          uri: lb://zc-auth-service
+#          predicates:
+#            - Path=/zc-auth-service/**
+#        - id: zc-auth-login
+#          uri: "{lb://zc-auth-service}/login"
+#          predicates:
+#            - Path=/login
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          gateway:
+#            provider: zcsecurity
+##            client-id: gateway
+##            client-secret: secret
+##            authorization-grant-type: authorization_code
+##            redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
+##            scope: openid,profile,email,resource.read
+#        provider:
+#          zcsecurity:
+#            authorization-uri: "{lb://zc-auth-service}/oauth/authorize"
+#            token-uri: "{lb://zc-auth-service}/oauth/token"
+#            user-info-uri: "{lb://zc-auth-service}/zc-auth/me"
+#            jwk-set-uri: "{lb://zc-auth-service}/zc-auth/jwks.json"
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+

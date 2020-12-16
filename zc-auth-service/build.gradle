@@ -1,0 +1,9 @@
+dependencies {
+    compile project(':zc-core')
+    compile project(':zc-user-api')
+    compile 'org.springframework.cloud:spring-cloud-starter-oauth2:' + springcloudVersion
+    compile 'com.nimbusds:nimbus-jose-jwt:8.2'
+
+}
+
+

@@ -1,0 +1,54 @@
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-aop'
+    compile 'org.springframework.boot:spring-boot-starter-test'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.cloud:spring-cloud-starter:' + springcloudVersion
+    compile 'com.alibaba.cloud:spring-cloud-starter-dubbo:' + springcloudAlibabaVersion
+    compile 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:' + springcloudAlibabaVersion
+    compile 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:' + springcloudAlibabaVersion
+    compile ('com.alibaba.cloud:spring-cloud-starter-alibaba-seata:' + springcloudAlibabaVersion){
+        exclude module: 'seata-spring-boot-starter'
+    }
+    compile 'io.seata:seata-spring-boot-starter:1.2.0'
+    compile 'com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel:' + springcloudAlibabaVersion
+
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
+    compile 'com.baomidou:mybatis-plus-boot-starter:3.3.2'
+    compile 'com.baomidou:mybatis-plus-generator:3.3.2'
+    compile 'mysql:mysql-connector-java:8.0.17'
+    compile 'p6spy:p6spy:3.9.0'
+
+//    compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.1'
+//    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+    compile 'com.alibaba:fastjson:1.2.60'
+    compile 'com.alibaba:druid-spring-boot-starter:1.1.20'
+    compile 'com.alibaba:druid:1.1.20'
+//    compile 'org.springframework:spring-jdbc:5.1.9.RELEASE'
+
+//    compile 'com.baomidou:mybatis-plus-boot-starter:3.2.0'
+//    compile 'com.baomidou:mybatis-plus-generator:3.2.0'
+    compile 'org.apache.velocity:velocity-engine-core:2.1'
+    compile 'org.apache.commons:commons-lang3:3.9'
+//    compile 'org.apache.httpcomponents:httpclient:4.5.10'
+    compile 'org.apache.ant:ant:1.10.7'
+    compile 'org.slf4j:slf4j-api:1.7.28'
+    compile 'commons-codec:commons-codec:1.13'
+    compile 'com.google.guava:guava:28.1-jre'
+//    compile 'com.belerweb:pinyin4j:2.5.1'
+//    compile 'org.springframework.boot:spring-boot-starter-data-redis'
+//    compile 'redis.clients:jedis:3.1.0'
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.swagger:swagger-annotations:1.5.22'
+    compile 'io.swagger:swagger-models:1.5.22'
+    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+//    compile ('org.dcm4che:dcm4che-core:5.19.0'){
+//        exclude module: 'slf4j-log4j12'
+//    }
+    compile 'org.apache.poi:poi-ooxml:4.1.0'
+    compile 'org.projectlombok:lombok:1.18.12'
+
+}
+
+

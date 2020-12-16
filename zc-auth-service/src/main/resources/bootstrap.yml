@@ -1,0 +1,84 @@
+server:
+  port: 11225
+  servlet:
+    context-path: /zc-auth-service
+spring:
+  profiles:
+    active: ${spring.profile:dev}
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: zc-auth-service
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      config:
+        server-addr: ${nacos.server:localhost}:${nacos.port:8848}
+        file-extension: yaml
+      discovery:
+        server-addr: ${nacos.server:localhost}:${nacos.port:8848}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# seata
+seata:
+  tx-service-group: tx_group_auth
+  config:
+    type: nacos
+    nacos:
+      serverAddr: ${nacos.server:localhost}:${nacos.port:8848}
+  registry:
+    type: nacos
+    nacos:
+      server-addr: ${nacos.server:localhost}:${nacos.port:8848}
+
+# dubbo
+dubbo:
+  scan:
+    base-packages: com.zengc
+  protocol:
+    name: dubbo
+    port: -1
+  cloud:
+    subscribed-services: zc-user-service
+  consumer:
+    check: true
+    timeout: 30000
+  registry:
+    address: spring-cloud://${nacos.server}
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapping/*Mapper.xml
+  typeAliasesPackage: com.zengc.*.entity,com.zengc.*.api.params
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      #驼峰下划线转换
+
+      #刷新mapper 调试神器
+      #refresh-mapper: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #逻辑删除配置（下面3个配置）
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      #自定义填充策略接口实现
+      update-strategy: not_empty
+
+# 开启断点访问监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    httptrace: true
+    heapdump: true

@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':zc-core')
+    compile project(':zc-department-api')
+    compile project(':zc-employee-api')
+
+}
+
+

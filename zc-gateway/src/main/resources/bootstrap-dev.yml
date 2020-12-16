@@ -1,0 +1,6 @@
+nacos:
+  server: 192.168.56.241
+  port: 8848
+sentinel:
+  server: 192.168.56.241
+  port: 8858
